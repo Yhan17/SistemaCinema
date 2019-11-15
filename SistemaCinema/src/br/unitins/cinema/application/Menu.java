@@ -9,33 +9,40 @@ import br.unitins.cinema.model.Funcionario;
 import br.unitins.cinema.model.Gerente;
 import br.unitins.cinema.process.Sessao;
 
-public class Menu implements Autenticacao {
+public class Menu{
 	static Gerente gerente;
 	static Funcionario funcionario;
+	static String senha;
+	static String login;
+	static Long id;
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		List<Sessao> sessao = new ArrayList<Sessao>();
 		int opcao = 0;
-
+		gerente.setId(0l);
+		gerente.setLogin("teste");
+		gerente.setSenha("teste");
 		while (opcao != 2) {
-			System.out.println("Por favor Digite seu login e senha: ");
-
+			System.out.println("Por favor Digite seu id, seu login e sua senha: ");
+			id = scan.nextLong();
+			login = scan.next();
+			senha = scan.next();
+			if(gerente.preencherDados(login, senha, id) == true)
+				menuGerente();
+			else if(funcionario.preencherDados(login, senha, id) == true)
+				menuFuncionario();
+				
 		}
 
 	}
 
-	@Override
-	public boolean verificaLogin(String login) {
-		if(gerente.getLogin() == login)
-			return true;
-		else
-		return false;
+	public static void menuGerente() {
+		
+	}
+	public static void menuFuncionario() {
+		
 	}
 
-	@Override
-	public boolean verificaSenha(String senha) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+
 }

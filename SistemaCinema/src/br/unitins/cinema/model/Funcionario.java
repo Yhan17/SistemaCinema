@@ -1,6 +1,7 @@
 package br.unitins.cinema.model;
 
 import java.util.Date;
+import java.util.Scanner;
 
 public class Funcionario extends Pessoa {
 	private String funcao;
@@ -22,24 +23,37 @@ public class Funcionario extends Pessoa {
 
 
 	@Override
-	public void setLogin(String login) {
-		// TODO Auto-generated method stub
-		super.setLogin(login);
+	public boolean verificaSenha(String senha) {
+		if(senha.equals(getSenha()))
+			return true;
+		else
+		return false;
 	}
-	
+
 	@Override
-	public void setSenha(String senha) {
-		// TODO Auto-generated method stub
-		super.setSenha(senha);
+	public boolean verificaLogin(String login, Long id) {
+		if(login.equals(getLogin()) && id.equals(getId()))
+			return true;
+		else
+		return false;
 	}
-	@Override
-	public String getLogin() {
-		// TODO Auto-generated method stub
-		return super.getLogin();
+
+	public boolean preencherDados(String login, String senha, Long id) {
+		Scanner scan= new Scanner(System.in);
+		System.out.println("Por favor digite seu login e o seu Id: ");
+		login = scan.next();
+		System.out.println("Agoras seu ID");
+		id = scan.nextLong();
+		System.out.println("Por favor digite sua senha: ");
+		senha = scan.next();
+		scan.close();
+		if(verificaLogin(login, id) == true && verificaSenha(senha) == true)
+			return true;
+		else 
+		return false;
+		
 	}
-	@Override
-	public String getSenha() {
-		// TODO Auto-generated method stub
-		return super.getSenha();
-	}
+
+
+
 }

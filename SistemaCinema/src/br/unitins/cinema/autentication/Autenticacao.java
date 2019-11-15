@@ -2,7 +2,7 @@ package br.unitins.cinema.autentication;
 
 public interface Autenticacao {
 	
-	public  boolean verificaLogin(String login) ;
-	public  boolean verificaSenha(String senha);
+	boolean verificaSenha(String senha);
+	boolean verificaLogin(String login, Long id);
 	
 }

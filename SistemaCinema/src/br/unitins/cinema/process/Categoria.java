@@ -20,7 +20,7 @@ public enum Categoria {
 		return descricao;
 	}
 	
-	public static Categoria valueOf(int codigo) { // Para seleção do Sexo
+	public static Categoria valueOf(int codigo) { // Para seleção da categoria
 
 		if (codigo == 1)
 			return Categoria.ACAO;
