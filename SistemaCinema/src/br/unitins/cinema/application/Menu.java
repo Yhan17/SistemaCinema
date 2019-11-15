@@ -71,6 +71,10 @@ public class Menu {
 			String escolhaFilme = scan.next();
 			int escolhaSala = scan.nextInt();
 			String escolhaHora = scan.next();
+			//E agora pra alterar um elemento da lista??
+			
+			
+			
 //			String escolhaFilme = scan.next();
 //			sessao.stream().filter(p -> p.getFilme().getNome()==escolhaFilme).forEach(p -> System.out.println(p.getFilme().getNome()));	
 //			System.out.println("Da(s) sessão(ões) que apareceram, qual você quer alterar?");
