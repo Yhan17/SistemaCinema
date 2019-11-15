@@ -59,14 +59,16 @@ public class Menu {
 		LocalDate dataLançamento;
 		LocalDate dataEncerramento;
 		Integer sala;
+		Integer id = sessoes.size(); //Aqui tem que rever
 
 		Scanner leitor = new Scanner(System.in);
 		if (teste == 1) {
 
 			System.out.println("Bem vindo Gerente");
 			System.out.println(
-					"O que deseja fazer? 1- Adicionar uma nova Sessao, 2- Remover uma Sessao Antiga, 3- Listar Todas as Sessões");
+					"O que deseja fazer? 1- Adicionar uma nova Sessao, 2- Remover uma Sessao Antiga, 3- Listar Todas as Sessões, 4- Alterar uma sessão, 5- Sair ");
 			int opcao = leitor.nextInt();
+			while(opcao!=5) {
 			if (opcao == 1) {
 				System.out.println("Adicione o nome do filme: ");
 				filme.setNome(leitor.next());
@@ -80,18 +82,23 @@ public class Menu {
 				System.out.println("Minutos: ");
 				int Minutos = leitor.nextInt();
 				hora = LocalTime.of(Hora, Minutos);
-
-				sessoes.add(new Sessao(filme, sala, hora));
+				sessoes.add(new Sessao(id,filme, sala, hora));
+				id = sessoes.size() + 1; //Aqui tbm
+				System.out.println("O que deseja fazer a seguir? 1- Adicionar uma nova Sessao, 2- Remover uma Sessao Antiga, 3- Listar Todas as Sessões, 4- Alterar uma sessão, 5- Sair ");
+				opcao = leitor.nextInt();
 			}else if(opcao == 2) {
-				System.out.println("Digite o numero da Sessão que vc Deseja Remover");
+				System.out.println("Digite o ID da Sessão que vc Deseja Remover");
+				System.out.println(sessoes);
 				sessoes.remove(leitor.nextInt());
-			}else {
+				System.out.println("O que deseja fazer a seguir? 1- Adicionar uma nova Sessao, 2- Remover uma Sessao Antiga, 3- Listar Todas as Sessões, 4- Alterar uma sessão, 5- Sair ");
+				opcao = leitor.nextInt();
+			}else if(opcao == 3) {
 				System.out.println("Essas são as Sessões cadastradas: ");
-				for (Sessao sessao : sessoes) {
-					System.out.println(sessao);
-				}
+				System.out.println(sessoes);
+				System.out.println("O que deseja fazer a seguir? 1- Adicionar uma nova Sessao, 2- Remover uma Sessao Antiga, 3- Listar Todas as Sessões, 4- Alterar uma sessão, 5- Sair ");
+				opcao = leitor.nextInt();
 			}
-
+		}
 		} else {
 			System.out.println("Bem vindo Funcionario");
 		}

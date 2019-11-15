@@ -51,4 +51,10 @@ public class Filme {
 		this.dataEncerramento = dataEncerramento;
 	}
 
+	@Override
+	public String toString() {
+		return "Filme [categoria=" + categoria + ", nome=" + nome + ", produtora=" + produtora + ", dataLancametno="
+				+ dataLancametno + ", dataEncerramento=" + dataEncerramento + "]";
+	}
+
 }
