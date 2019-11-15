@@ -39,14 +39,14 @@ public class Funcionario extends Pessoa {
 	}
 
 	public boolean preencherDados(String login, String senha, Integer id) {
-		Scanner scan= new Scanner(System.in);
-		System.out.println("Por favor digite seu login e o seu Id: ");
-		login = scan.next();
-		System.out.println("Agoras seu ID");
-		id = scan.nextInt();
-		System.out.println("Por favor digite sua senha: ");
-		senha = scan.next();
-		scan.close();
+//		Scanner scan= new Scanner(System.in);
+//		System.out.println("Por favor digite seu login e o seu Id: ");
+//		login = scan.next();
+//		System.out.println("Agoras seu ID");
+//		id = scan.nextInt();
+//		System.out.println("Por favor digite sua senha: ");
+//		senha = scan.next();
+//		scan.close();
 		if(verificaLogin(login, id) == true && verificaSenha(senha) == true)
 			return true;
 		else 

@@ -15,14 +15,19 @@ public class Menu {
 
 	public static void main(String[] args) {
 		Scanner leitor = new Scanner(System.in);
+		
 		String senha = " ";
 		String login = " ";
 		Integer id;
+		
 		Gerente gerente = new Gerente(0, "teste", "tester", null, null);
 		gerente.setId(0);
 		gerente.setLogin("teste");
 		gerente.setSenha("tester");
-		Funcionario funcionario = null;
+		Funcionario funcionario = new Funcionario(1, "teste", "123", null, null, "fdas");
+		funcionario.setId(1);
+		funcionario.setLogin("tester");
+		funcionario.setSenha("teste");
 		
 		System.out.println("Por favor Digite seu id ");
 		id = leitor.nextInt();
@@ -30,7 +35,6 @@ public class Menu {
 		login = leitor.next();
 		System.out.println("Por fim sua senha");
 		senha = leitor.next();
-		leitor.close();
 		if (gerente.preencherDados(login, senha, id) == true)
 			menuGerente();
 		else if (funcionario.preencherDados(login, senha, id) == true)
