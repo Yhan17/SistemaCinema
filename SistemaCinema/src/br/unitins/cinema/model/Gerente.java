@@ -20,5 +20,25 @@ public class Gerente extends Pessoa{
 		// TODO Auto-generated method stub
 		return true;
 	}
-
+	@Override
+	public void setLogin(String login) {
+		// TODO Auto-generated method stub
+		super.setLogin(login);
+	}
+	
+	@Override
+	public void setSenha(String senha) {
+		// TODO Auto-generated method stub
+		super.setSenha(senha);
+	}
+	@Override
+	public String getLogin() {
+		// TODO Auto-generated method stub
+		return super.getLogin();
+	}
+	@Override
+	public String getSenha() {
+		// TODO Auto-generated method stub
+		return super.getSenha();
+	}
 }
