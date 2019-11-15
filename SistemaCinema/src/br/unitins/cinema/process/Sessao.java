@@ -9,6 +9,12 @@ public class Sessao {
 	private Integer sala;
 	List<Time> horarios = new ArrayList<Time>();
 
+	public Sessao(Filme filme, Integer sala, List<Time> horarios) {
+		this.filme = filme;
+		this.sala = sala;
+		this.horarios = horarios;
+	}
+
 	public Filme getFilme() {
 		return filme;
 	}

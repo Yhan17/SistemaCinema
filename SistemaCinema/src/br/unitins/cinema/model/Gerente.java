@@ -9,17 +9,7 @@ public class Gerente extends Pessoa{
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public boolean verificaLogin(String login) {
-		// TODO Auto-generated method stub
-		return true;
-	}
 
-	@Override
-	public boolean verificaSenha(String senha) {
-		// TODO Auto-generated method stub
-		return true;
-	}
 	@Override
 	public void setLogin(String login) {
 		// TODO Auto-generated method stub

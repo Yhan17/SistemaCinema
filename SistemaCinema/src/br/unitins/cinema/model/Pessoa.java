@@ -2,9 +2,9 @@ package br.unitins.cinema.model;
 
 import java.util.Date;
 
-import br.unitins.cinema.autentication.Autenticacao;
 
-public abstract class Pessoa implements Autenticacao {
+
+public abstract class Pessoa {
 	private Long id;
 	private String nome;
 	private String cpf;
@@ -77,25 +77,5 @@ public abstract class Pessoa implements Autenticacao {
 		this.senha = senha;
 	}
 	
-	@Override
-	public boolean verificaLogin(String login) {
-		if(this.login == login)
-			return true;
-		else
-			return false;
-	}
-	@Override
-	public boolean verificaSenha(String senha) {
-		if(this.senha == senha)
-			return true;
-		else
-			return false;
-	}
-	
-	public boolean autenticador() {
-		if(verificaLogin(login) == true && verificaSenha(senha) == true)
-			return true;
-		else
-			return false;
-	}
+
 }

@@ -22,18 +22,6 @@ public class Funcionario extends Pessoa {
 
 
 	@Override
-	public boolean verificaLogin(String login) {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	public boolean verificaSenha(String senha) {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
 	public void setLogin(String login) {
 		// TODO Auto-generated method stub
 		super.setLogin(login);
