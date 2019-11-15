@@ -1,20 +1,22 @@
 package br.unitins.cinema.process;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Filme {
 	private Categoria categoria;
 	private String nome;
 	private String produtora;
-	private Date dataLancametno;
-	private Date dataEncerramento;
+	private LocalDate dataLancamento;
+	private LocalDate dataEncerramento;
 
-	public Filme(Categoria categoria, String nome, String produtora, Date dataLancametno, Date dataEncerramento) {
+	public Filme(Categoria categoria, String nome, String produtora, LocalDate dataLancamento, LocalDate dataEncerramento) {
 		super();
 		this.categoria = categoria;
 		this.nome = nome;
 		this.produtora = produtora;
-		this.dataLancametno = dataLancametno;
+		this.dataLancamento = dataLancamento;
 		this.dataEncerramento = dataEncerramento;
 	}
 
@@ -42,20 +44,20 @@ public class Filme {
 		this.produtora = produtora;
 	}
 
-	public Date getDataLancametno() {
-		return dataLancametno;
+	public LocalDate getDataLancamento() {
+		return dataLancamento;
 	}
 
-	public void setDataLancametno(Date dataLancametno) {
-		this.dataLancametno = dataLancametno;
+	public void setDataLancametno(int dia, int mes, int ano) {
+		this.dataLancamento = LocalDate.of(ano, mes, dia);
 	}
 
-	public Date getDataEncerramento() {
+	public LocalDate getDataEncerramento() {
 		return dataEncerramento;
 	}
 
-	public void setDataEncerramento(Date dataEncerramento) {
-		this.dataEncerramento = dataEncerramento;
+	public void setDataEncerramento(int dia, int mes, int ano) {
+		this.dataEncerramento = LocalDate.of(ano, mes, dia);
 	}
 
 }

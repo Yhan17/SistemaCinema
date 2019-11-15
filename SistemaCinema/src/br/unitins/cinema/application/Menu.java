@@ -1,5 +1,8 @@
 package br.unitins.cinema.application;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -8,6 +11,8 @@ import com.sun.xml.internal.ws.api.pipe.NextAction;
 
 import br.unitins.cinema.model.Funcionario;
 import br.unitins.cinema.model.Gerente;
+import br.unitins.cinema.process.Categoria;
+import br.unitins.cinema.process.Filme;
 import br.unitins.cinema.process.Sessao;
 
 public class Menu {
@@ -56,8 +61,50 @@ public class Menu {
 				+ "3- Listar as sessões dos filmes, 4- Alterar sessão de algum filme ");
 		int opcao = scan.nextInt();
 		if (opcao == 1) {
-			System.out.println("Por favor preencha os dados do filme");
-			sessao.add(new Sessao(null, opcao, null));
+			
+				
+				System.out.println("Escolha a categoria do filme:");
+				System.out.println("1 - Ação \n 2 - Comédia \n 3 - Drama \n 4 - Ficção \n 5 - Terror");
+				String escolhaCategoria = scan.next();
+				
+				System.out.println("Escolha o nome do filme:");
+				String escolhaNome = scan.next();
+				
+				System.out.println("Digite o nome da produtora");
+				String escolhaProdutora = scan.next();
+				
+				System.out.println("Digite o dia, mes e ano de lançamento:");
+				int escolhaDiaLancamento = scan.nextInt();
+				int escolhaMesLancamento = scan.nextInt();
+				int escolhaAnoLancamento = scan.nextInt();
+				
+				System.out.println("Digite o dia, mes e ano de encerramento:");
+				int escolhaDiaEncerramento = scan.nextInt();
+				int escolhaMesEncerramento = scan.nextInt();
+				int escolhaAnoEncerramento = scan.nextInt();
+	
+				System.out.println("Digite o numero da sala:");
+				int escolhaSala = scan.nextInt();
+				
+				System.out.println("Informe o dia, mes, ano, hora e minuto da sessão:");
+				int escolhaDiaSessao = scan.nextInt();
+				int escolhaMesSessao = scan.nextInt();
+				int escolhaAnoSessao = scan.nextInt();
+				int escolhaHoraSessao = scan.nextInt();
+				int escolhaMinutoSessao = scan.nextInt();
+				
+				
+				sessao.add(new Sessao (new Filme(Categoria.valueOf(escolhaCategoria), escolhaNome, escolhaProdutora,
+						null,null), escolhaSala, null ) );
+				sessao.get(0).getFilme().setDataLancametno(escolhaDiaLancamento, escolhaMesLancamento, escolhaMesLancamento);
+				sessao.get(0).getFilme().setDataEncerramento(escolhaDiaEncerramento, escolhaMesEncerramento, escolhaAnoEncerramento);
+				sessao.get(0).setHorarios(escolhaDiaSessao, escolhaMesSessao, escolhaAnoSessao, escolhaHoraSessao, escolhaMinutoSessao);
+				System.out.println(sessao);
+			
+				
+				
+				System.out.println(sessao);
+			
 		} else if (opcao == 2) {
 			System.out.println("Por favor digite o numero da sessao que quer remover: ");
 			int remSessao = scan.nextInt();

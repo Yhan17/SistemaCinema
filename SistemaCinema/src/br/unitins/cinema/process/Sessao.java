@@ -1,6 +1,8 @@
 package br.unitins.cinema.process;
 
 import java.sql.Time;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,12 +10,12 @@ import java.util.List;
 public class Sessao {
 	private Filme filme;
 	private Integer sala;
-	List<Time> horarios = new ArrayList<Time>();
+	private  LocalDateTime DataHorarios;
 
-	public Sessao(Filme filme, Integer sala, List<Time> horarios) {
+	public Sessao(Filme filme, Integer sala, LocalDateTime DataHorarios) {
 		this.filme = filme;
 		this.sala = sala;
-		this.horarios = horarios;
+		this.DataHorarios = DataHorarios;
 	}
 
 	public Filme getFilme() {
@@ -32,17 +34,17 @@ public class Sessao {
 		this.sala = sala;
 	}
 
-	public List<Time> getHorarios() {
-		return horarios;
+	public LocalDateTime getHorarios() {
+		return DataHorarios;
 	}
-
-	public void setHorarios(List<Time> horarios) {
-		this.horarios = horarios;
+	
+	public  void setHorarios(int dia, int mes, int ano, int hora, int minuto) {
+		DataHorarios = LocalDateTime.of(ano, mes, dia, hora, minuto);
 	}
 
 	@Override
 	public String toString() {
-		return "Sessao [filme=" + filme + ", sala=" + sala + ", horarios=" + horarios + "]";
+		return "Sessao [filme=" + filme + ", sala=" + sala + ", horarios=" + DataHorarios + "]";
 	}
 	
 	
