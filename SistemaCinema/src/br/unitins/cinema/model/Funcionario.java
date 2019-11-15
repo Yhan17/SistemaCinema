@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Funcionario extends Pessoa {
 	private String funcao;
 
-	public Funcionario(Long id, String nome, String cpf, Date dataNascimento, Double salario, String funcao) {
+	public Funcionario(Integer id, String nome, String cpf, Date dataNascimento, Double salario, String funcao) {
 		super(id, nome, cpf, dataNascimento, salario);
 		this.funcao = funcao;
 	}
@@ -31,19 +31,19 @@ public class Funcionario extends Pessoa {
 	}
 
 	@Override
-	public boolean verificaLogin(String login, Long id) {
-		if(login.equals(getLogin()) && id.equals(getId()))
+	public boolean verificaLogin(String login, Integer id) {
+		if(login.equals(getLogin()) && id== getId())
 			return true;
 		else
 		return false;
 	}
 
-	public boolean preencherDados(String login, String senha, Long id) {
+	public boolean preencherDados(String login, String senha, Integer id) {
 		Scanner scan= new Scanner(System.in);
 		System.out.println("Por favor digite seu login e o seu Id: ");
 		login = scan.next();
 		System.out.println("Agoras seu ID");
-		id = scan.nextLong();
+		id = scan.nextInt();
 		System.out.println("Por favor digite sua senha: ");
 		senha = scan.next();
 		scan.close();

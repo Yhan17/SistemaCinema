@@ -7,7 +7,7 @@ import br.unitins.cinema.autentication.Autenticacao;
 
 
 public abstract class Pessoa  implements Autenticacao  {
-	private Long id;
+	private Integer id;
 	private String nome;
 	private String cpf;
 	private Date dataNascimento;
@@ -15,7 +15,7 @@ public abstract class Pessoa  implements Autenticacao  {
 	private String login;
 	private String senha;
 
-	public Pessoa(Long id, String nome, String cpf, Date dataNascimento, Double salario) {
+	public Pessoa(Integer id, String nome, String cpf, Date dataNascimento, Double salario) {
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
@@ -23,11 +23,11 @@ public abstract class Pessoa  implements Autenticacao  {
 		this.salario = salario;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -139,6 +139,9 @@ public abstract class Pessoa  implements Autenticacao  {
 			return false;
 		return true;
 	}
+	
+
+
 	
 
 }
