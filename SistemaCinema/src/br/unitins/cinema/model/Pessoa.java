@@ -1,26 +1,29 @@
 package br.unitins.cinema.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import br.unitins.cinema.autentication.Autenticacao;
 
-
-
-public abstract class Pessoa  implements Autenticacao  {
+public abstract class Pessoa implements Autenticacao{
 	private Integer id;
 	private String nome;
 	private String cpf;
-	private Date dataNascimento;
+	private LocalDate dataNascimento;
 	private Double salario;
 	private String login;
 	private String senha;
+	
+	
 
-	public Pessoa(Integer id, String nome, String cpf, Date dataNascimento, Double salario) {
+	public Pessoa(Integer id, String nome, String cpf, LocalDate dataNascimento, Double salario, String login,
+			String senha) {
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.dataNascimento = dataNascimento;
 		this.salario = salario;
+		this.login = login;
+		this.senha = senha;
 	}
 
 	public Integer getId() {
@@ -47,11 +50,11 @@ public abstract class Pessoa  implements Autenticacao  {
 		this.cpf = cpf;
 	}
 
-	public Date getDataNascimento() {
+	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(Date dataNascimento) {
+	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
@@ -139,9 +142,11 @@ public abstract class Pessoa  implements Autenticacao  {
 			return false;
 		return true;
 	}
-	
 
-
-	
+	@Override
+	public String toString() {
+		return "Pessoa [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", dataNascimento=" + dataNascimento
+				+ ", salario=" + salario + ", login=" + login + ", senha=" + senha + "]";
+	}
 
 }

@@ -1,21 +1,18 @@
 package br.unitins.cinema.process;
 
-import java.sql.Time;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+
 
 public class Sessao {
 	private Filme filme;
-	private Integer sala;
-	private  LocalDateTime DataHorarios;
+	private Integer sala ;
+	private LocalTime horarios;
+	
 
-	public Sessao(Filme filme, Integer sala, LocalDateTime DataHorarios) {
+	public Sessao(Filme filme, Integer sala, LocalTime horarios) {
 		this.filme = filme;
 		this.sala = sala;
-		this.DataHorarios = DataHorarios;
+		this.horarios = horarios;
 	}
 
 	public Filme getFilme() {
@@ -34,19 +31,21 @@ public class Sessao {
 		this.sala = sala;
 	}
 
-	public LocalDateTime getHorarios() {
-		return DataHorarios;
+	public LocalTime getHorarios() {
+		return horarios;
 	}
-	
-	public  void setHorarios(int dia, int mes, int ano, int hora, int minuto) {
-		DataHorarios = LocalDateTime.of(ano, mes, dia, hora, minuto);
+
+	public void setHorarios(LocalTime horarios) {
+		this.horarios = horarios;
 	}
 
 	@Override
 	public String toString() {
-		return "Sessao [filme=" + filme + ", sala=" + sala + ", horarios=" + DataHorarios + "]";
+		return "Sessao [filme=" + filme + ", sala=" + sala + ", horarios=" + horarios + "]";
 	}
+
 	
+
 	
 	
 }

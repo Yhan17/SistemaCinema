@@ -1,44 +1,32 @@
 package br.unitins.cinema.model;
 
-import java.util.Date;
-import java.util.Scanner;
+import java.time.LocalDate;
+
 
 public class Gerente extends Pessoa{
 
-	public Gerente(Integer id, String nome, String cpf, Date dataNascimento, Double salario) {
-		super(id, nome, cpf, dataNascimento, salario);
+
+	public Gerente(Integer id, String nome, String cpf, LocalDate dataNascimento, Double salario, String login,
+			String senha) {
+		super(id, nome, cpf, dataNascimento, salario, login, senha);
 		// TODO Auto-generated constructor stub
 	}
-	Scanner scan= new Scanner(System.in);
+
+	@Override
+	public boolean verificaLogin(String login) {
+		if(login == getLogin())
+			return true;
+		else
+			return false;
+	}
+
 	@Override
 	public boolean verificaSenha(String senha) {
-		if(senha.equals(getSenha()))
+		if(senha == getSenha())
 			return true;
 		else
-		return false;
-	}
-
-	@Override
-	public boolean verificaLogin(String login, Integer id) {
-		if(login.equals(getLogin()) && id== getId())
-			return true;
-		else
-		return false;
-	}
-
-	public boolean preencherDados(String login, String senha, Integer id) {
-//		System.out.println("Por favor digite seu login e o seu Id: ");
-//		login = scan.next();
-//		System.out.println("Agoras seu ID");
-//		id = scan.nextInt();
-//		System.out.println("Por favor digite sua senha: ");
-//		senha = scan.next();
-		if(verificaLogin(login, id) == true && verificaSenha(senha) == true)
-			return true;
-		else 
 			return false;
-		
 	}
 	
-	
+
 }
