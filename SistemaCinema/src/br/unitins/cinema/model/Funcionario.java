@@ -9,20 +9,6 @@ public class Funcionario extends Pessoa {
 		super(id, nome, cpf, dataNascimento, salario, login, senha);
 		}
 
-	@Override
-	public boolean verificaLogin(String login) {
-		if(login == getLogin())
-			return true;
-		else
-			return false;		
-	}
 
-	@Override
-	public boolean verificaSenha(String senha) {
-		if(senha == getSenha())
-			return true;
-		else
-			return false;		
-	}
 
 }

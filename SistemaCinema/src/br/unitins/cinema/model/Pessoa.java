@@ -2,9 +2,9 @@ package br.unitins.cinema.model;
 
 import java.time.LocalDate;
 
-import br.unitins.cinema.autentication.Autenticacao;
 
-public abstract class Pessoa implements Autenticacao{
+
+public abstract class Pessoa {
 	private Integer id;
 	private String nome;
 	private String cpf;

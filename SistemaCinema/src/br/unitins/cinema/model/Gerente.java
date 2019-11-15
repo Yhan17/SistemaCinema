@@ -12,21 +12,7 @@ public class Gerente extends Pessoa{
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public boolean verificaLogin(String login) {
-		if(login == getLogin())
-			return true;
-		else
-			return false;
-	}
 
-	@Override
-	public boolean verificaSenha(String senha) {
-		if(senha == getSenha())
-			return true;
-		else
-			return false;
-	}
 	
 
 }
