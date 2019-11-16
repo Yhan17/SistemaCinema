@@ -52,7 +52,7 @@ public class Sessao {
 
 	@Override
 	public String toString() {
-		return "Sessao [idSessao=" + idSessao + ", filme=" + filme + ", sala=" + sala + ", horarios=" + horarios + "]";
+		return "Sessao [idSessao=" + idSessao + ", filme=" + filme + ", sala=" + sala + ", horarios=" + horarios + "]\n";
 	}
 
 	
