@@ -60,7 +60,7 @@ public class Menu {
 
 			}
 		}
-
+		scan.close();
 	}
 
 	public static void menuCinema(int teste) {
@@ -115,8 +115,11 @@ public class Menu {
 							"O que deseja fazer a seguir? 1- Adicionar uma nova Sessao, 2- Remover uma Sessao Antiga, 3- Listar Todas as Sessões, 4- Alterar uma sessão, 5- Sair ");
 					opcao = leitor.nextInt();
 				} else if (opcao == 2) {
-					System.out.println("Digite o ID da Sessão que vc Deseja Remover");
-					System.out.println(sessoes);
+					System.out.println("Digite o ID da Sessão que vc Deseja Remover: ");
+					System.out.println(" ");
+					for (Sessao sessao : sessoes) {
+						System.out.println(sessao);
+					}
 					sessoes.remove(leitor.nextInt());
 					System.out.println(
 							"O que deseja fazer a seguir? 1- Adicionar uma nova Sessao, 2- Remover uma Sessao Antiga, 3- Listar Todas as Sessões, 4- Alterar uma sessão, 5- Sair ");
@@ -130,12 +133,51 @@ public class Menu {
 					System.out.println(
 							"O que deseja fazer a seguir? 1- Adicionar uma nova Sessao, 2- Remover uma Sessao Antiga, 3- Listar Todas as Sessões, 4- Alterar uma sessão, 5- Sair ");
 					opcao = leitor.nextInt();
+				}else if(opcao == 4) {
+					Filme mudarFilme = new Filme();
+					System.out.println("Por favor selecione o id da sessão que deseja alterar: ");
+					for (Sessao sessao : sessoes) {
+						System.out.println(sessao);
+					}
+					int mudarSessao = leitor.nextInt();
+					System.out.println(
+							"Por favor digite a Categoria do filme: 1-Ação, 2-Comédia, 3 Drama, 4-Ficçao, 5-Terror");
+					int categoria = leitor.nextInt();
+					if (categoria == 1)
+						mudarFilme.setCategoria(Categoria.ACAO);
+					else if (categoria == 2)
+						mudarFilme.setCategoria(Categoria.COMEDIA);
+					else if (categoria == 3)
+						mudarFilme.setCategoria(Categoria.DRAMA);
+					else if (categoria == 4)
+						mudarFilme.setCategoria(Categoria.FICCAO);
+					else if (categoria == 5)
+						mudarFilme.setCategoria(Categoria.TERROR);
+					else
+						System.out.println("Dados inválidos");
+
+					System.out.println("Adicione o nome do filme: ");
+					mudarFilme.setNome(leitor.next());
+					System.out.println("Adicione a produtora do filme: ");
+					mudarFilme.setProdutora(leitor.next());
+					System.out.println("Adicione a sala do filme: ");
+					sala = leitor.nextInt();
+					System.out.println("Por fim adicione o horário: ");
+					System.out.println("Hora: ");
+					int Hora = leitor.nextInt();
+					System.out.println("Minutos: ");
+					int Minutos = leitor.nextInt();
+					hora = LocalTime.of(Hora, Minutos);
+					sessoes.set(mudarSessao, new Sessao(id, mudarFilme, sala, hora));
+					
+				}else {
+					System.out.println("Sistema Deslogado");
 				}
 			}
 		} else {
 			System.out.println("Bem vindo Funcionario");
 		}
-
+		leitor.close();
 	}
 
 }
