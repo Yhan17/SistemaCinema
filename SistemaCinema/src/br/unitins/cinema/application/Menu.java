@@ -67,8 +67,6 @@ public class Menu {
 		List<Sessao> sessoes = new ArrayList<Sessao>();
 		Filme filme = new Filme();
 		LocalTime hora;
-		LocalDate dataLançamento;
-		LocalDate dataEncerramento;
 		Integer sala;
 		Integer id = sessoes.size(); // Aqui tem que rever
 
@@ -176,6 +174,19 @@ public class Menu {
 			}
 		} else {
 			System.out.println("Bem vindo Funcionario");
+			System.out.println("O que deseja fazer? 1- Listar Filmes, 2- Falar com gerente, 3-Sair");
+			int opcaoF = leitor.nextInt();
+			while(opcaoF != 3)
+			if(opcaoF == 1) {
+				System.out.println("Essa são as sessões");
+				for (Sessao sessao : sessoes) {
+					System.out.println(sessao);
+				}
+			}else if(opcaoF == 2) {
+				System.out.println("HAHA não tem essa opção ainda se ferrou");
+			}else {
+				System.out.println("Saindo");
+			}
 		}
 		leitor.close();
 	}
