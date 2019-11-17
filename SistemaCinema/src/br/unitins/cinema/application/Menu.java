@@ -68,7 +68,7 @@ public class Menu {
 		Filme filme = new Filme();
 		LocalTime hora;
 		Integer sala;
-		Integer id = sessoes.size(); // Aqui tem que rever
+		Integer id = sessoes.size(); 
 
 		Scanner leitor = new Scanner(System.in);
 		if (teste == 1) {
@@ -123,11 +123,22 @@ public class Menu {
 							"O que deseja fazer a seguir? 1- Adicionar uma nova Sessao, 2- Remover uma Sessao Antiga, 3- Listar Todas as Sessões, 4- Alterar uma sessão, 5- Sair ");
 					opcao = leitor.nextInt();
 				} else if (opcao == 3) {
-					System.out.println("Essas são as Sessões cadastradas: ");
-					System.out.println("");
-					for (Sessao sessao : sessoes) {
-						System.out.println(sessao);
-					}
+					System.out.println("Selecione qual tipo de lista voce quer imprimir: 1- Lista Ordenada por Nome do Filme\n2-Lista Ordenada por Numero da Sala\n3-Lista Ordenada por Catagoria do filme\n4-Lista Ordenada Por produtora\nLista Ordenada por Horário");
+					int listagem = leitor.nextInt();
+					if(listagem == 1)
+						imprimirListaOrdenadaPorNomeDoFilme(sessoes);
+					else if(listagem == 2)
+						imprimirListaOrdenadaPorNumeroDaSala(sessoes);
+					else if(listagem == 3)
+					imprimirListaOrdenadaPorCategoria(sessoes);
+					else if(listagem == 4)
+						imprimirListaOrdenadaPorProdutora(sessoes);
+					else if(listagem == 5)
+						imprimirListaOrdenadaPorHorario(sessoes);
+					else
+						System.out.println("Valor Invalido");
+					
+					
 					System.out.println(
 							"O que deseja fazer a seguir? 1- Adicionar uma nova Sessao, 2- Remover uma Sessao Antiga, 3- Listar Todas as Sessões, 4- Alterar uma sessão, 5- Sair ");
 					opcao = leitor.nextInt();
@@ -178,10 +189,25 @@ public class Menu {
 			int opcaoF = leitor.nextInt();
 			while(opcaoF != 3)
 			if(opcaoF == 1) {
-				System.out.println("Essa são as sessões");
-				for (Sessao sessao : sessoes) {
-					System.out.println(sessao);
-				}
+				System.out.println("Selecione qual tipo de lista voce quer imprimir: 1- Lista Ordenada por Nome do Filme\n2-Lista Ordenada por Numero da Sala\n3-Lista Ordenada por Catagoria do filme\n4-Lista Ordenada Por produtora\nLista Ordenada por Horário");
+				int listagem = leitor.nextInt();
+				if(listagem == 1)
+					imprimirListaOrdenadaPorNomeDoFilme(sessoes);
+				else if(listagem == 2)
+					imprimirListaOrdenadaPorNumeroDaSala(sessoes);
+				else if(listagem == 3)
+				imprimirListaOrdenadaPorCategoria(sessoes);
+				else if(listagem == 4)
+					imprimirListaOrdenadaPorProdutora(sessoes);
+				else if(listagem == 5)
+					imprimirListaOrdenadaPorHorario(sessoes);
+				else
+					System.out.println("Valor Invalido");
+				
+				
+				System.out.println(
+						"O que deseja fazer a seguir? 1- Falar com gerente, 2-Sair, 3- Sair ");
+				opcaoF = leitor.nextInt();
 			}else if(opcaoF == 2) {
 				System.out.println("HAHA não tem essa opção ainda se ferrou");
 			}else {
@@ -189,6 +215,27 @@ public class Menu {
 			}
 		}
 		leitor.close();
+	}
+	
+	public static void imprimirListaOrdenadaPorNomeDoFilme(List<Sessao> lista) {
+		lista.sort((o1, o2) -> o1.getFilme().getNome().compareTo(o2.getFilme().getNome()));
+		lista.forEach(p -> System.out.println(p.getFilme().getNome()));
+	}
+	public static void imprimirListaOrdenadaPorNumeroDaSala(List<Sessao> lista) {
+		lista.sort((o1, o2) -> o1.getSala().compareTo(o2.getSala()));
+		lista.forEach(p -> System.out.println(p.getSala()));
+	}
+	public static void imprimirListaOrdenadaPorCategoria(List<Sessao> lista) {
+		lista.sort((o1, o2) -> o1.getFilme().getCategoria().compareTo(o2.getFilme().getCategoria()));
+		lista.forEach(p -> System.out.println(p.getFilme().getCategoria()));
+	}
+	public static void imprimirListaOrdenadaPorProdutora(List<Sessao> lista) {
+		lista.sort((o1, o2) -> o1.getFilme().getProdutora().compareTo(o2.getFilme().getProdutora()));
+		lista.forEach(p -> System.out.println(p.getFilme().getProdutora()));
+	}
+	public static void imprimirListaOrdenadaPorHorario(List<Sessao> lista) {
+		lista.sort((o1, o2) -> o1.getHorarios().compareTo(o2.getHorarios()));
+		lista.forEach(p -> System.out.println(p.getHorarios()));
 	}
 
 }
