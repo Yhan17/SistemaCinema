@@ -74,10 +74,11 @@ public class Menu {
 		if (teste == 1) {
 
 			System.out.println("Bem vindo Gerente");
-			System.out.println(
-					"O que deseja fazer? 1- Adicionar uma nova Sessao, 2- Remover uma Sessao Antiga, 3- Listar Todas as Sessões, 4- Alterar uma sessão, 5- Sair ");
-			int opcao = leitor.nextInt();
+			int opcao = 0;
 			while (opcao != 5) {
+				System.out.println(
+						"O que deseja fazer? 1- Adicionar uma nova Sessao, 2- Remover uma Sessao Antiga, 3- Listar Todas as Sessões, 4- Alterar uma sessão, 5- Sair ");
+				opcao = leitor.nextInt();
 				if (opcao == 1) {
 					System.out.println(
 							"Por favor digite a Categoria do filme: 1-Ação, 2-Comédia, 3 Drama, 4-Ficçao, 5-Terror");
@@ -109,9 +110,7 @@ public class Menu {
 					hora = LocalTime.of(Hora, Minutos);
 					sessoes.add(new Sessao(id, filme, sala, hora));
 					id = sessoes.size();
-					System.out.println(
-							"O que deseja fazer a seguir? 1- Adicionar uma nova Sessao, 2- Remover uma Sessao Antiga, 3- Listar Todas as Sessões, 4- Alterar uma sessão, 5- Sair ");
-					opcao = leitor.nextInt();
+					
 				} else if (opcao == 2) {
 					for (Sessao sessao : sessoes) {
 						System.out.println(sessao);
@@ -121,9 +120,6 @@ public class Menu {
 					for (Sessao sessao : sessoes) {
 						System.out.println(sessao);
 					}
-					System.out.println(
-							"O que deseja fazer a seguir? 1- Adicionar uma nova Sessao, 2- Remover uma Sessao Antiga, 3- Listar Todas as Sessões, 4- Alterar uma sessão, 5- Sair ");
-					opcao = leitor.nextInt();
 				} else if (opcao == 3) {
 					System.out.println("Selecione qual tipo de lista voce quer imprimir: 1- Lista Ordenada por Nome do Filme\n2-Lista Ordenada por Numero da Sala\n3-Lista Ordenada por Catagoria do filme\n4-Lista Ordenada Por produtora\nLista Ordenada por Horário");
 					int listagem = leitor.nextInt();
@@ -141,9 +137,6 @@ public class Menu {
 						System.out.println("Valor Invalido");
 					
 					
-					System.out.println(
-							"O que deseja fazer a seguir? 1- Adicionar uma nova Sessao, 2- Remover uma Sessao Antiga, 3- Listar Todas as Sessões, 4- Alterar uma sessão, 5- Sair ");
-					opcao = leitor.nextInt();
 				}else if(opcao == 4) {
 					Filme mudarFilme = new Filme();
 					System.out.println("Por favor selecione o id da sessão que deseja alterar: ");
@@ -180,10 +173,6 @@ public class Menu {
 					int Minutos = leitor.nextInt();
 					hora = LocalTime.of(Hora, Minutos);
 					sessoes.set(mudarSessao, new Sessao(id, mudarFilme, sala, hora));
-					System.out.println(
-							"O que deseja fazer a seguir? 1- Adicionar uma nova Sessao, 2- Remover uma Sessao Antiga, 3- Listar Todas as Sessões, 4- Alterar uma sessão, 5- Sair ");
-					opcao = leitor.nextInt();
-					
 				}else if (opcao==5) {
 					System.out.println("Sistema Deslogado");
 				}
