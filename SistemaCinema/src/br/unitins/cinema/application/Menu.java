@@ -101,7 +101,7 @@ public class Menu {
 					filme.setProdutora(leitor.next());
 					System.out.println("Adicione a sala do filme: ");
 					sala = leitor.nextInt();
-					System.out.println("Por fim adicione o horário: ");
+					System.out.println("Por fim adicione o horário: (Digite as horas primeiro e depois os minutos) ");
 					System.out.println("Hora: ");
 					int Hora = leitor.nextInt();
 					System.out.println("Minutos: ");
@@ -113,12 +113,14 @@ public class Menu {
 							"O que deseja fazer a seguir? 1- Adicionar uma nova Sessao, 2- Remover uma Sessao Antiga, 3- Listar Todas as Sessões, 4- Alterar uma sessão, 5- Sair ");
 					opcao = leitor.nextInt();
 				} else if (opcao == 2) {
-					System.out.println("Digite o ID da Sessão que vc Deseja Remover: ");
-					System.out.println(" ");
 					for (Sessao sessao : sessoes) {
 						System.out.println(sessao);
 					}
+					System.out.println("\nDigite o ID da Sessão que você Deseja Remover: ");
 					sessoes.remove(leitor.nextInt());
+					for (Sessao sessao : sessoes) {
+						System.out.println(sessao);
+					}
 					System.out.println(
 							"O que deseja fazer a seguir? 1- Adicionar uma nova Sessao, 2- Remover uma Sessao Antiga, 3- Listar Todas as Sessões, 4- Alterar uma sessão, 5- Sair ");
 					opcao = leitor.nextInt();
@@ -171,15 +173,18 @@ public class Menu {
 					mudarFilme.setProdutora(leitor.next());
 					System.out.println("Adicione a sala do filme: ");
 					sala = leitor.nextInt();
-					System.out.println("Por fim adicione o horário: ");
+					System.out.println("Por fim adicione o horário: (Digite a hora e depois minutos) ");
 					System.out.println("Hora: ");
 					int Hora = leitor.nextInt();
 					System.out.println("Minutos: ");
 					int Minutos = leitor.nextInt();
 					hora = LocalTime.of(Hora, Minutos);
 					sessoes.set(mudarSessao, new Sessao(id, mudarFilme, sala, hora));
+					System.out.println(
+							"O que deseja fazer a seguir? 1- Adicionar uma nova Sessao, 2- Remover uma Sessao Antiga, 3- Listar Todas as Sessões, 4- Alterar uma sessão, 5- Sair ");
+					opcao = leitor.nextInt();
 					
-				}else {
+				}else if (opcao==5) {
 					System.out.println("Sistema Deslogado");
 				}
 			}
