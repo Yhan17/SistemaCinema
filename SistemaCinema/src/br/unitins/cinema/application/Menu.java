@@ -23,7 +23,7 @@ public class Menu {
 		String senha;
 		int count = 0;
 		while (count != 3) {
-			System.out.println("Por favor digite 1 para fazer o login e a senha, ou 2 para se cadastrar(Gerente) ");
+			System.out.println("Por favor digite 1 para fazer o login e a senha");
 			int opcao = scan.nextInt();
 			if (opcao == 1) {
 				System.out.println("Digite seu login: ");
@@ -64,42 +64,52 @@ public class Menu {
 	}
 
 	public static void menuCinema(int teste) {
+
 		List<Sessao> sessoes = new ArrayList<Sessao>();
-		Filme filme = new Filme();
 		LocalTime hora;
 		Integer sala;
-		Integer id = sessoes.size(); 
+		String escolhaNome;
+		Integer id = sessoes.size();
+		int intId = id.intValue();
 
 		Scanner leitor = new Scanner(System.in);
 		if (teste == 1) {
 
 			System.out.println("Bem vindo Gerente");
 			int opcao = 0;
+
+			// Pré-Cadastro de Filmes (Como solicitado para ganhar tempo)
+
 			while (opcao != 5) {
+
 				System.out.println(
 						"O que deseja fazer? 1- Adicionar uma nova Sessao, 2- Remover uma Sessao Antiga, 3- Listar Todas as Sessões, 4- Alterar uma sessão, 5- Sair ");
 				opcao = leitor.nextInt();
 				if (opcao == 1) {
 					System.out.println(
 							"Por favor digite a Categoria do filme: 1-Ação, 2-Comédia, 3 Drama, 4-Ficçao, 5-Terror");
-					int categoria = leitor.nextInt();
-					if (categoria == 1)
-						filme.setCategoria(Categoria.ACAO);
-					else if (categoria == 2)
-						filme.setCategoria(Categoria.COMEDIA);
-					else if (categoria == 3)
-						filme.setCategoria(Categoria.DRAMA);
-					else if (categoria == 4)
-						filme.setCategoria(Categoria.FICCAO);
-					else if (categoria == 5)
-						filme.setCategoria(Categoria.TERROR);
+
+					int escolha = leitor.nextInt();
+
+					Categoria categoria = null;
+
+					if (escolha == 1)
+						categoria = Categoria.ACAO;
+					else if (escolha == 2)
+						categoria = Categoria.COMEDIA;
+					else if (escolha == 3)
+						categoria = Categoria.DRAMA;
+					else if (escolha == 4)
+						categoria = Categoria.FICCAO;
+					else if (escolha == 5)
+						categoria = Categoria.TERROR;
 					else
 						System.out.println("Dados inválidos");
 
 					System.out.println("Adicione o nome do filme: ");
-					filme.setNome(leitor.next());
+					escolhaNome = leitor.next();
 					System.out.println("Adicione a produtora do filme: ");
-					filme.setProdutora(leitor.next());
+					String escolhaProdutora = leitor.next();
 					System.out.println("Adicione a sala do filme: ");
 					sala = leitor.nextInt();
 					System.out.println("Por fim adicione o horário: (Digite as horas primeiro e depois os minutos) ");
@@ -108,37 +118,39 @@ public class Menu {
 					System.out.println("Minutos: ");
 					int Minutos = leitor.nextInt();
 					hora = LocalTime.of(Hora, Minutos);
-					sessoes.add(new Sessao(id, filme, sala, hora));
+
+					sessoes.add(new Sessao(id, new Filme(categoria, escolhaNome, escolhaProdutora), sala, hora));
 					id = sessoes.size();
-					
+
 				} else if (opcao == 2) {
 					for (Sessao sessao : sessoes) {
-						System.out.println(sessao);
+						System.out.println(sessoes);
 					}
 					System.out.println("\nDigite o ID da Sessão que você Deseja Remover: ");
-					sessoes.remove(leitor.nextInt());
-					for (Sessao sessao : sessoes) {
-						System.out.println(sessao);
+					int digiteId = leitor.nextInt();
+					sessoes.remove(digiteId);
+					for (Sessao sessao1 : sessoes) {
+						System.out.println(sessao1);
 					}
 				} else if (opcao == 3) {
-					System.out.println("Selecione qual tipo de lista voce quer imprimir: 1- Lista Ordenada por Nome do Filme\n2-Lista Ordenada por Numero da Sala\n3-Lista Ordenada por Catagoria do filme\n4-Lista Ordenada Por produtora\nLista Ordenada por Horário");
+					System.out.println(
+							"Selecione qual tipo de lista voce quer imprimir: 1- Lista Ordenada por Nome do Filme\n2-Lista Ordenada por Numero da Sala\n3-Lista Ordenada por Catagoria do filme\n4-Lista Ordenada Por produtora\n5 - Lista Ordenada por Horário");
 					int listagem = leitor.nextInt();
-					if(listagem == 1)
+					if (listagem == 1)
 						imprimirListaOrdenadaPorNomeDoFilme(sessoes);
-					else if(listagem == 2)
+					else if (listagem == 2)
 						imprimirListaOrdenadaPorNumeroDaSala(sessoes);
-					else if(listagem == 3)
-					imprimirListaOrdenadaPorCategoria(sessoes);
-					else if(listagem == 4)
+					else if (listagem == 3)
+						imprimirListaOrdenadaPorCategoria(sessoes);
+					else if (listagem == 4)
 						imprimirListaOrdenadaPorProdutora(sessoes);
-					else if(listagem == 5)
+					else if (listagem == 5)
 						imprimirListaOrdenadaPorHorario(sessoes);
 					else
 						System.out.println("Valor Invalido");
-					
-					
-				}else if(opcao == 4) {
-					Filme mudarFilme = new Filme();
+
+				} else if (opcao == 4) {
+					Filme mudarFilme = new Filme(null, null, null);
 					System.out.println("Por favor selecione o id da sessão que deseja alterar: ");
 					for (Sessao sessao : sessoes) {
 						System.out.println(sessao);
@@ -173,7 +185,7 @@ public class Menu {
 					int Minutos = leitor.nextInt();
 					hora = LocalTime.of(Hora, Minutos);
 					sessoes.set(mudarSessao, new Sessao(id, mudarFilme, sala, hora));
-				}else if (opcao==5) {
+				} else if (opcao == 5) {
 					System.out.println("Sistema Deslogado");
 				}
 			}
@@ -181,52 +193,56 @@ public class Menu {
 			System.out.println("Bem vindo Funcionario");
 			System.out.println("O que deseja fazer? 1- Listar Filmes, 2- Falar com gerente, 3-Sair");
 			int opcaoF = leitor.nextInt();
-			while(opcaoF != 3)
-			if(opcaoF == 1) {
-				System.out.println("Selecione qual tipo de lista voce quer imprimir: 1- Lista Ordenada por Nome do Filme\n2-Lista Ordenada por Numero da Sala\n3-Lista Ordenada por Catagoria do filme\n4-Lista Ordenada Por produtora\nLista Ordenada por Horário");
-				int listagem = leitor.nextInt();
-				if(listagem == 1)
-					imprimirListaOrdenadaPorNomeDoFilme(sessoes);
-				else if(listagem == 2)
-					imprimirListaOrdenadaPorNumeroDaSala(sessoes);
-				else if(listagem == 3)
-				imprimirListaOrdenadaPorCategoria(sessoes);
-				else if(listagem == 4)
-					imprimirListaOrdenadaPorProdutora(sessoes);
-				else if(listagem == 5)
-					imprimirListaOrdenadaPorHorario(sessoes);
-				else
-					System.out.println("Valor Invalido");
-				
-				
-				System.out.println(
-						"O que deseja fazer a seguir? 1- Falar com gerente, 2-Sair, 3- Sair ");
-				opcaoF = leitor.nextInt();
-			}else if(opcaoF == 2) {
-				System.out.println("HAHA não tem essa opção ainda se ferrou");
-			}else {
-				System.out.println("Saindo");
-			}
+			while (opcaoF != 3)
+				if (opcaoF == 1) {
+					System.out.println(
+							"Selecione qual tipo de lista voce quer imprimir: 1- Lista Ordenada por Nome do Filme\n2-Lista Ordenada por Numero da Sala\n3-Lista Ordenada por Catagoria do filme\n4-Lista Ordenada Por produtora\nLista Ordenada por Horário");
+					int listagem = leitor.nextInt();
+					if (listagem == 1)
+						imprimirListaOrdenadaPorNomeDoFilme(sessoes);
+					else if (listagem == 2)
+						imprimirListaOrdenadaPorNumeroDaSala(sessoes);
+					else if (listagem == 3)
+						imprimirListaOrdenadaPorCategoria(sessoes);
+					else if (listagem == 4)
+						imprimirListaOrdenadaPorProdutora(sessoes);
+					else if (listagem == 5)
+						imprimirListaOrdenadaPorHorario(sessoes);
+					else
+						System.out.println("Valor Invalido");
+
+					System.out.println("O que deseja fazer a seguir? 1- Falar com gerente, 2-Sair, 3- Sair ");
+					opcaoF = leitor.nextInt();
+				} else if (opcaoF == 2) {
+					System.out.println("Ainda não há essa opção");
+				} else {
+					System.out.println("Saindo");
+				}
 		}
 		leitor.close();
-	}
-	
+		
+	}   //Expressões Lambda para ordenação da impressão de listas
+
 	public static void imprimirListaOrdenadaPorNomeDoFilme(List<Sessao> lista) {
 		lista.sort((o1, o2) -> o1.getFilme().getNome().compareTo(o2.getFilme().getNome()));
 		lista.forEach(p -> System.out.println(p.getFilme().getNome()));
 	}
+
 	public static void imprimirListaOrdenadaPorNumeroDaSala(List<Sessao> lista) {
 		lista.sort((o1, o2) -> o1.getSala().compareTo(o2.getSala()));
 		lista.forEach(p -> System.out.println(p.getSala()));
 	}
+
 	public static void imprimirListaOrdenadaPorCategoria(List<Sessao> lista) {
 		lista.sort((o1, o2) -> o1.getFilme().getCategoria().compareTo(o2.getFilme().getCategoria()));
 		lista.forEach(p -> System.out.println(p.getFilme().getCategoria()));
 	}
+
 	public static void imprimirListaOrdenadaPorProdutora(List<Sessao> lista) {
 		lista.sort((o1, o2) -> o1.getFilme().getProdutora().compareTo(o2.getFilme().getProdutora()));
 		lista.forEach(p -> System.out.println(p.getFilme().getProdutora()));
 	}
+
 	public static void imprimirListaOrdenadaPorHorario(List<Sessao> lista) {
 		lista.sort((o1, o2) -> o1.getHorarios().compareTo(o2.getHorarios()));
 		lista.forEach(p -> System.out.println(p.getHorarios()));

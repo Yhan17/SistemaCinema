@@ -7,9 +7,19 @@ public class Filme {
 	private Categoria categoria;
 	private String nome;
 	private String produtora;
-	private LocalDate dataLancametno;
-	private LocalDate dataEncerramento;
+	
 
+	
+	public Filme(Categoria categoria, String nome, String produtora) {
+		super();
+		this.categoria = categoria;
+		this.nome = nome;
+		this.produtora = produtora;
+	}
+
+
+
+	
 
 	public Categoria getCategoria() {
 		return categoria;
@@ -35,26 +45,11 @@ public class Filme {
 		this.produtora = produtora;
 	}
 
-	public LocalDate getDataLancametno() {
-		return dataLancametno;
-	}
 
-	public void setDataLancametno(LocalDate dataLancametno) {
-		this.dataLancametno = dataLancametno;
-	}
-
-	public LocalDate getDataEncerramento() {
-		return dataEncerramento;
-	}
-
-	public void setDataEncerramento(LocalDate dataEncerramento) {
-		this.dataEncerramento = dataEncerramento;
-	}
 
 	@Override
 	public String toString() {
-		return "Filme [categoria=" + categoria + ", nome=" + nome + ", produtora=" + produtora + ", dataLancametno="
-				+ dataLancametno + ", dataEncerramento=" + dataEncerramento + "]";
+		return "Filme [categoria=" + categoria + ", nome=" + nome + ", produtora=" + produtora + "]";
 	}
 
 }
